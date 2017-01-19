@@ -8,7 +8,7 @@ This is how I install `py-faster-rcnn`, up to running `demo.py` to make sure the
 
 ### **Hardware / Software**
 
-I used **Dell Aspire E 15** running **NVIDIA GeForce 940MX** with 2 GB dedicated VRAM. The **Virtual Box** version is  5.1.14 r112924 with **Ubuntu 16.04** installed in it.
+I used **Dell Aspire E 15** running **NVIDIA GeForce 940MX** with 2 GB dedicated VRAM. The **Virtual Box** version is  5.1.14 r112924 with **Ubuntu 16.04** installed in it (2GB RAM, 16GB VDI). I have successfully re-run these steps on Microsoft Surface Pro 3 with the same VBox and Ubuntu as well.
 
 
 ## **0. Virtual Box Configuration**
