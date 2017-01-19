@@ -4,7 +4,7 @@
 # Install py-faster-rcnn in Virtual Box (Ubuntu)
 <small> @nmonarizqa | 1/18/2017 </small>
 
-This is how I install `py-faster-rcnn`, up to running `demo.py` to make sure it works. Replace any `<user>` below with your real username.
+This is how I install `py-faster-rcnn`, up to running `demo.py` to make sure the installation is succesful. Since we can't virtualize graphic device, the library will be **running on CPU**, so there are bunch of modifications here. Replace any `<user>` below with your real username.
 
 ### **Hardware / Software**
 
@@ -92,7 +92,7 @@ Now the easiest part, download the `py-faster-rcnn`
 ```
 git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 ```
-Then create an enviromental variable for `py-faster-rcc` and `caffe-fast-rcnn` folder paths.
+Then create enviromental variables for `py-faster-rcc` and `caffe-fast-rcnn` folder paths.
 ```
 echo 'export FRCN=/home/<user>/py-faster-rcnn' >> ~/.bashrc
 
@@ -241,8 +241,10 @@ cd $FCRN/tools
 python demo.py --cpu --net zf
 ```
 
-If you are able to run the demo, it will show something like this
+If you are able to run the demo smoothly, it will show something like this
 ![Success demo](https://lh3.googleusercontent.com/ya-SiQcQCe9eHCDgyI6iQjwWUcVn1HAKiOqcIN1ULbKW9aHimXuIowHIwbNxeRyqsF2YhN9xnao1rBd87H5uYn81H9kJZte8vaZI8e2qI5PBZD9Z0VJdmnlRKXsk485PCBZ9NHTgoNDn8ijvDal3tiIlY_ZEjtHwOwKoJU57wokpwYWi4rvNIzLIRhdgH-a0b4Dq72JqGoFglcUwtVx7mYsK73YDn7BVwfeb9tWgr-xT9nXE7sIGlcPpdTIXQ9CuBPU0xSz-_k2PVtqsWv1F0yR3qLdH7SQ2KDq4XH0pm6YRvSBDXcLH2qPs0voAfxwCkcpxIXfPHJvpIHVekgbGFSs80ecyWVssZ8muVr3nEkkT-U-iU4VLEil_IaR8l7njvwr4-B_ojwUUs-lY0KrlsfnVmT9M0u3do9feoDvzGc0xm7m2ra8n-MpshdyLnbpK6g3lNdBQueLLAu_p_rTCIKyIIA-yZvkvJVLZRqzF0pwXpfQSFepygjrHgaLxNV7NiSxavq3aYvA3zb4cggzfcdP8baXhrGRzRecI_IIfnLsjV6jRW2JbDwsGHoQFqXgU1JuQmu9y=w1920-h918)
+
+### Good luck!
 
 ## References
 - [Ubuntu 14.04 VirtualBox VM](https://github.com/BVLC/caffe/wiki/Ubuntu-14.04-VirtualBox-VM)
