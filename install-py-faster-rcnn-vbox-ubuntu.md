@@ -28,7 +28,7 @@ sudo apt-get install linux-headers-`uname -r`
 
 Click menu `Devices` then click `Insert Guest Addition CD Image ..`. The virtual CD drive will be mounted. Then in your terminal:
 ```
-cd/media/<user>/VBOXADDITIONS_5.1.14_112924 
+cd /media/<user>/VBOXADDITIONS_5.1.14_112924 
 
 sudo ./VBoxLinuxAdditions.run
 ```
@@ -69,11 +69,12 @@ Then run the installer
 ``` 
 sudo ./cuda_8.0.44_linux.run --kernel-source-path=/usr/src/linux-headers-`uname -r`/
 ```
-Click `Enter` up until the option appears:
+Hit `Enter` up until the option appears:
 
 - Accept EULA: type `accept`
 - **Do not** install graphic card drivers since we don't have graphic card in our Virtual Box:  type `n`
-- Install toolkit: press `enter`
+- Install toolkit: type `y`
+- Enter toolkit location: jus tpress `enter`
 - Install symbolic link: type `y`
 - Install samples: type `y`
 - Enter CUDA samples location, in my case I leave it as is: press `enter`
@@ -90,6 +91,8 @@ source ~/.bashrc
 ## **3. Download `py-faster-rcnn`**
 Now the easiest part, download the `py-faster-rcnn`
 ```
+cd ~
+
 git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 ```
 Then create enviromental variables for `py-faster-rcc` and `caffe-fast-rcnn` folder paths.
@@ -106,7 +109,7 @@ Here comes the most annoying part because I had to do lots of adjustment back an
 
 #### 4.1. Install python requirements
 ```
-cd $CAFFE/pyhton
+cd $CAFFE/python
 
 for req in $(cat requirements.txt); do pip install $req; done
 
@@ -123,6 +126,8 @@ sudo ln -s /home/<user>/.local/lib/python2.7/site-packages/numpy/core/include/nu
 In the caffe root folder (`$CAFFE`), copy the Makefile.config example
 ```
 cp Makefile.config.example Makefile.config
+
+gedit Makefile.config
 ```
 Then edit some necessary parts:
 
@@ -145,7 +150,7 @@ PYTHON_INCLUDE := /usr/include/python2.7 /home/<user>/.local/lib/python2.7/site-
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
 ```
 ```
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
+LIBRARY_DIRS := $(PYTHON_LIB) xcd
 ```
 ```
 CUDA_DIR := /usr/local/cuda-8.0 
@@ -165,23 +170,23 @@ make all
 
 #### 5.1.  Edit `config.py`
 ```
-gedit $RFCN/lib/fast_rcnn/config.py
+gedit $FRCN/lib/fast_rcnn/config.py
 ``` 
 then set `USE_GPU_NMS` to `FALSE`.
 
 #### 5.2. Edit `test_net` and `train_net`
 
 ```
-gedit $RFCN/tools/test_net.py
+gedit $FRCN/tools/test_net.py
 
-gedit $RFCN/tools/train_net.py
+gedit $FRCN/tools/train_net.py
 ``` 
 In **both files** replace `caffe.set_mode_gpu()` with `caffe.set_mode_cpu()`.
 
 #### 5.3. Edit `setup.py`
 
 ```
-cd $RFCN/lib
+cd $FRCN/lib
 
 cp setup.py setup-original.py
 
@@ -221,7 +226,7 @@ Comment these lines:
 ```
 #### 5.5. Compile the libraries
 ```
-cd $FCRN/lib
+cd $FRCN/lib
 
 make
 ```
@@ -236,7 +241,7 @@ cd $FRCN
 ```
 #### 6.2. Run demo
 ```
-cd $FCRN/tools
+cd $FRCN/tools
 
 python demo.py --cpu --net zf
 ```
